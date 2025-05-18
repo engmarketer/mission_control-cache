@@ -1,0 +1,12 @@
+source "https://rubygems.org"
+gem "rails", "~> 7.1.0"
+gem "sqlite3"
+gem "puma"
+gem "solid_cache"
+gem "redis"
+gem "importmap-rails"
+gem "turbo-rails"
+gem "stimulus-rails"
+
+# Specify your gem's dependencies in mission_control-cache.gemspec
+gem "mission_control-cache", path: "../.."

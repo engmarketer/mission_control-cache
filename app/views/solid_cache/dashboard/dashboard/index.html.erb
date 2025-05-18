@@ -1,0 +1,53 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold mb-6">SolidCache Dashboard</h1>
+  
+  <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+    <h2 class="text-xl font-semibold mb-4">Cache Stats</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-blue-50 p-4 rounded-lg">
+        <h3 class="text-sm font-medium text-blue-800">Total Entries</h3>
+        <p class="text-2xl font-bold"><%= @total_entries || 0 %></p>
+      </div>
+      <div class="bg-green-50 p-4 rounded-lg">
+        <h3 class="text-sm font-medium text-green-800">Hit Rate</h3>
+        <p class="text-2xl font-bold"><%= @hit_rate || "0%" %></p>
+      </div>
+      <div class="bg-purple-50 p-4 rounded-lg">
+        <h3 class="text-sm font-medium text-purple-800">Memory Usage</h3>
+        <p class="text-2xl font-bold"><%= @memory_usage || "0 MB" %></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <h2 class="text-xl font-semibold mb-4">Recent Cache Operations</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead>
+          <tr>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Key</th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Operation</th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Timestamp</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <% if @recent_operations && @recent_operations.any? %>
+            <% @recent_operations.each do |operation| %>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= operation[:key] %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= operation[:operation] %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= operation[:size] %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= operation[:timestamp] %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="4" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No recent operations</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
