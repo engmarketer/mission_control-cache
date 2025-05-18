@@ -1,14 +1,37 @@
-# SolidCache::Dashboard
-Short description and motivation.
+# MissionControl::Cache
+A Mission Control dashboard for monitoring and managing SolidCache.
 
 ## Usage
-How to use my plugin.
+
+After installing the gem, mount the engine in your Rails application's routes:
+
+```ruby
+# config/routes.rb
+Rails.application.routes.draw do
+  mount MissionControl::Cache::Engine => "/cache"
+  
+  # Your other routes...
+end
+```
+
+This will make the dashboard available at `/cache` in your application.
+
+### Configuration
+
+Make sure SolidCache is properly configured in your application:
+
+```ruby
+# config/initializers/solid_cache.rb
+Rails.application.config.solid_cache.backend = :redis
+Rails.application.config.solid_cache.namespace = "your_app_cache"
+Rails.application.config.solid_cache.expires_in = 1.hour
+```
 
 ## Installation
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "solid_cache-dashboard"
+gem "mission_control-cache"
 ```
 
 And then execute:
@@ -18,7 +41,7 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install solid_cache-dashboard
+$ gem install mission_control-cache
 ```
 
 ## Contributing
