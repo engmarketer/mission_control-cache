@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "debug"
   spec.add_development_dependency "redis"
   spec.add_development_dependency "redis-namespace"
-  spec.add_development_dependency "rubocop", "~> 1.52.0"
+  spec.add_development_dependency "rubocop", "~> 1.76.0"
   spec.add_development_dependency "rubocop-performance"
   spec.add_development_dependency "rubocop-rails-omakase"
   spec.add_development_dependency "better_html"
